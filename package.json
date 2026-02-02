@@ -29,7 +29,11 @@
     "directory",
     "structure"
   ],
-  "author": "",
+  "author": "Igor Afanasyev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iafan/tree-to-html.git"
+  },
   "license": "Unlicense",
   "devDependencies": {
     "tsup": "^8.5.0",
