@@ -1,0 +1,38 @@
+{
+  "name": "tree-to-html",
+  "version": "1.0.0",
+  "description": "Parse ASCII tree structures and render as HTML tables with semantic class names",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "tree",
+    "ascii",
+    "html",
+    "directory",
+    "structure"
+  ],
+  "author": "",
+  "license": "Unlicense",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
