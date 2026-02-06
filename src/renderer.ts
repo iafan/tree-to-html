@@ -73,10 +73,14 @@ export function renderTreeHtml(nodes: TreeNode[]): string {
       indentHtml += `<span class="tree-indent${hasLine ? ' tree-vline' : ''}"></span>`
     }
 
-    // Add the branch connector for non-root nodes
+    // Add the branch connector for non-root nodes, or a vertical line for gap rows
     if (row.depth > 0) {
-      const branchClass = row.isLast ? 'tree-corner' : 'tree-branch'
-      indentHtml += `<span class="tree-indent ${branchClass}"></span>`
+      if (row.name) {
+        const branchClass = row.isLast ? 'tree-corner' : 'tree-branch'
+        indentHtml += `<span class="tree-indent ${branchClass}"></span>`
+      } else {
+        indentHtml += `<span class="tree-indent${!row.isLast ? ' tree-vline' : ''}"></span>`
+      }
     }
 
     return `

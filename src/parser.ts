@@ -20,6 +20,36 @@ function parseLine(line: string): ParsedLine | null {
   // Each indentation level is 4 characters wide
   const INDENT_WIDTH = 4
 
+  // Check for gap lines (only vertical bars │/| and whitespace, with optional comment)
+  if (!/[├└─]/.test(line) && /[│|]/.test(line)) {
+    const stripped = line.replace(/[│|\s]/g, '')
+    if (stripped === '' || /^(#|\/\/)/.test(stripped)) {
+      let maxPos = 0
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '│' || line[i] === '|') {
+          maxPos = i
+        }
+      }
+      const depth = Math.floor(maxPos / INDENT_WIDTH) + 1
+
+      let comment: string | undefined
+      const commentMatch = line.match(/(#|\/\/)(.*)$/)
+      if (commentMatch) {
+        comment = commentMatch[2].trim() || undefined
+        if (comment) {
+          comment = comment.replace(/->/g, '→').replace(/<-/g, '←')
+        }
+      }
+
+      return {
+        depth,
+        name: '',
+        comment,
+        isFolder: false,
+      }
+    }
+  }
+
   // Find the last branch character (├ or └)
   let branchPos = -1
   for (let i = 0; i < line.length; i++) {

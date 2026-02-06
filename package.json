@@ -1,6 +1,6 @@
 {
   "name": "tree-to-html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parse ASCII tree structures and render as HTML tables with semantic class names",
   "type": "module",
   "main": "./dist/index.cjs",
